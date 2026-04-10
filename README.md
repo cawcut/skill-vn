@@ -66,7 +66,7 @@ vn-skill/
 ### Install
 
 ```bash
-openclaw plugins install vn-skill-for-windows
+clawhub install vn-skill-for-windows
 ```
 
 ### Features
