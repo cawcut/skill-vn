@@ -984,33 +984,7 @@ For the full CLI surface, all options, transition style names, and JSON output s
 
 ---
 
-## 6. Changelog
-
-### v0.1.2
-- Output path now always stated as full local path (§ 3)
-- Added preview delivery for remote channels (Slack, Discord, Telegram, etc.) — video preview starts at 480p → 360p → 240p (§ 1.8); preview message clearly labeled as preview
-- compress-video pre-flight (§ 1.7) rewritten: now uses `compress-video-estimate` (local, no VN connection) before running `compress-video`; shows estimate to user before proceeding; auto-retries with lower params if estimated ≥ original; presents numbered options after 2 failed retries
-- Added `compress-video-estimate` command — local estimation, no VN connection needed (§ 1.6)
-- `cutout-video` enhanced: new `--feather`, `--expand`, `--stroke-style/size/distance/color/opacity`, `--keep-draft` params; output format changed from .mov to .mp4
-- `auto-captions` progress reporting updated: fine-grained events (model download, speech recognition %, adding captions, export %) now mapped to user-facing messages (§ 1.3)
-- `compress-video`: removed `--codec` parameter (no longer supported)
-
-### v0.1.1
-- Added `cutout-image`: portrait background removal from images (PNG with transparent background)
-- Added `cutout-video`: portrait background removal from videos (MP4, person on black background)
-- Both cutout commands require VN Video Editor 0.22 (build 655) or later
-- Added MCP Server setup guidance for first-time VN installs (§ 2A)
-- Added connection failure troubleshooting checklist (§ 2J)
-- Updated VN draft tip to clarify the draft is saved locally, not the user's current device
-
-### v0.1.0
-- Initial release
-- Supports: extract-audio, extract-frame, auto-captions, add-caption, compress-video, compress-image, concat-video, denoise
-- macOS only, requires VN Video Editor 0.22 (build 654) or later
-
----
-
-## 7. Notes
+## 6. Notes
 
 - macOS only — does not work on other platforms
 - All processing runs inside VN Video Editor; `vnapp-cli` is only the local bridge
