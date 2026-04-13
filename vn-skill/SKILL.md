@@ -22,7 +22,8 @@ metadata:
             {
               "id": "vnapp-cli-download",
               "kind": "download",
-              "url": "https://config-img.dev.vlognow.me/cli/vnapp-cli-darwin-universal-v0.1.0(5).zip",
+              "url": "https://github.com/cawcut/skill-vn/releases/download/0.1.0/vnapp-cli-darwin-universal-v0.1.0.5.zip",
+              "sha256": "857417f671fd6f38ec30cf993f80c79efede7641f3532c2e9a99e75177a5853f",
               "archive": "zip",
               "extract": true,
               "targetDir": "~/.openclaw/tools/vnapp-cli/",
@@ -445,13 +446,19 @@ Example event:
 - If **too old** → follow [§ 2B VN too old](#2b-vn-too-old)
 - If **ok** → continue to Step 3
 
-**Step 3 — Check CLI is installed:**
+**Step 3 — Check CLI is installed and up to date:**
 ```bash
 test -x ~/.openclaw/tools/vnapp-cli/vnapp-cli && echo "ok" || echo "missing"
 ```
 
-- If **missing** → follow [§ 2C CLI missing](#2c-cli-missing) (auto-install silently)
-- If **ok** → continue to Step 4
+- If **missing** → follow [§ 2C CLI missing or outdated](#2c-cli-missing-or-outdated) (auto-install silently)
+- If **ok** → check version:
+  ```bash
+  ~/.openclaw/tools/vnapp-cli/vnapp-cli --version
+  ```
+  Expected: `vnapp-cli 0.1.0 (5)`
+  - If version **matches** → continue to Step 4
+  - If version **does not match** → follow [§ 2C CLI missing or outdated](#2c-cli-missing-or-outdated) (auto-update silently)
 
 **Step 4 — Validate input file(s):**
 ```bash
@@ -747,7 +754,7 @@ Caption engines:
 
 ---
 
-### 2C. CLI missing
+### 2C. CLI missing or outdated
 
 Auto-install silently — do not ask the user:
 
