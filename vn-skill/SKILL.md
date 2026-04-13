@@ -358,6 +358,14 @@ Ask:
 
 ### cutout-video
 
+**Before proceeding, check if the Mac is Apple Silicon:**
+```bash
+uname -m
+```
+- If output is `arm64` → proceed
+- If output is `x86_64` (Intel Mac) → stop and tell the user:
+  > `cutout-video` is not supported on Intel Macs. This feature requires Apple Silicon (M1 or later).
+
 Ask:
 > Ready to remove the background from this video. Would you like any of these options, or shall I go ahead with defaults?
 >
@@ -547,7 +555,7 @@ After a task completes:
 | `cutout-image` | `_cutout` |
 | `cutout-video` | `_cutout` |
 
-`cutout-video` outputs **MP4** (person composited on black background).
+`cutout-video` outputs **MP4** (person composited on black background). **Requires Apple Silicon (M1 or later) — not supported on Intel Macs.**
 `cutout-image` outputs **PNG** (transparent background).
 `compress-video-estimate` does not produce an output file — result is JSON printed to stdout only.
 
@@ -676,7 +684,7 @@ Applies when the user is communicating via a **remote channel** (Slack, Discord,
 | compress video / shrink video / export smaller / reduce file size / re-encode | `compress-video` |
 | join clips / merge videos / concatenate / combine videos / stitch together | `concat-video` |
 | denoise / remove noise / remove background noise / clean audio / noise reduction | `denoise` |
-| remove background / cutout / portrait cutout / background removal / transparent background | `cutout-image` (image) or `cutout-video` (video) |
+| remove background / cutout / portrait cutout / background removal / transparent background | `cutout-image` (image) or `cutout-video` (video, Apple Silicon only) |
 | estimate video compression / how big will this be / preview compression size | `compress-video-estimate` |
 | cancel job / stop task / abort | `cancel` |
 
