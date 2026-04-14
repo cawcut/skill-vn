@@ -43,7 +43,7 @@ The CLI binary (`vnapp-cli`) is automatically downloaded during skill installati
 | Concatenate Videos      | `concat-video`   | Merge clips with 50+ transition styles                       |
 | Denoise                 | `denoise`        | Reduce noise from audio or video via DeepFilterNet           |
 | Portrait Cutout (Image) | `cutout-image`   | Remove background from person image (PNG with transparency)  |
-| Portrait Cutout (Video) | `cutout-video`   | Remove background from person video (MP4, composited on black) |
+| Portrait Cutout (Video) | `cutout-video`   | Remove background from person video (MP4, composited on black) — **Apple Silicon only** |
 
 
 ### Skill Contents
