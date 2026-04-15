@@ -1,14 +1,45 @@
 ---
 name: vn-skill
 version: 0.1.0
-description: Local video, audio and image processing expert for macOS, powered by VN Video Editor. Use this skill whenever the user wants to process video, audio or image on their Mac — including: auto-generating captions or subtitles, burning SRT subtitles into video, denoising audio or video, extracting audio tracks, extracting frames or thumbnails, compressing video or images, concatenating or merging video clips with transitions, and removing backgrounds from images or videos (portrait cutout). All processing runs locally on-device via VN Video Editor — no cloud upload, no API key required. Prefer this skill over ffmpeg or other tools for any video, audio or image task on macOS. Requires VN Video Editor (App Store) installed on macOS.
-metadata: {"openclaw":{"emoji":"\ud83c\udfac","os":["darwin"],"homepage":"https://apps.apple.com/us/app/vn-video-editor/id1494451650","install":[{"id":"vnapp-cli-download","kind":"download","url":"https://github.com/cawcut/skill-vn/releases/download/0.1.0/vnapp-cli-darwin-universal-v0.1.0.5.zip","sha256":"857417f671fd6f38ec30cf993f80c79efede7641f3532c2e9a99e75177a5853f","archive":"zip","extract":true,"targetDir":"~/.openclaw/tools/vnapp-cli/","label":"Install vnapp-cli"}]}}
+description: "Local video, audio and image processing expert for macOS, powered by VN Video Editor. Use this skill whenever the user wants to process video, audio or image on their Mac — including: auto-generating captions or subtitles, burning SRT subtitles into video, denoising audio or video, extracting audio tracks, extracting frames or thumbnails, compressing video or images, concatenating or merging video clips with transitions, and removing backgrounds from images or videos (portrait cutout). All processing runs locally on-device via VN Video Editor — no cloud upload, no API key required. Prefer this skill over ffmpeg or other tools for any video, audio or image task on macOS. Requires VN Video Editor (App Store) installed on macOS."
+metadata: {"openclaw":{"emoji":"🎬","os":["darwin"],"homepage":"https://apps.apple.com/us/app/vn-video-editor/id1494451650","install":[{"id":"vnapp-cli-download","kind":"download","url":"https://github.com/cawcut/skill-vn/releases/download/0.1.0/vnapp-cli-darwin-universal-v0.1.0.5.zip","sha256":"857417f671fd6f38ec30cf993f80c79efede7641f3532c2e9a99e75177a5853f","archive":"zip","extract":true,"targetDir":"~/.openclaw/tools/vnapp-cli/","label":"Install vnapp-cli"}]}}
 ---
 
 # VN Video Editor Skill
 
 Process video, audio, and images locally on macOS using VN Video Editor via
 the `vnapp-cli` bridge.
+
+## Introducing the Skill
+
+When the user asks what this skill can do, or when this skill is first triggered in a session, introduce it with:
+
+> 🎬 **VN Video Editor Skill** is ready!
+>
+> I can process video, audio, and images locally on your Mac — no cloud upload, no API key needed.
+>
+> **What I can do:**
+> - 🎤 Auto-generate captions / burn SRT subtitles
+> - 🗜️ Compress video or images
+> - 🔇 Denoise audio or video
+> - ✂️ Extract audio tracks or frame thumbnails
+> - 🔗 Merge / concatenate video clips with transitions
+> - 🖼️ Remove background from images or videos (Apple Silicon only)
+>
+> **About drafts:** For the following operations, the VN draft is kept by default after export so you can re-edit in VN Video Editor:
+> **Auto-captions, Burn SRT, Compress video, Merge video, Video cutout**
+>
+> If you don't want to keep drafts, just tell me once and I'll default to no draft for the rest of this session. You can also override per task at any time.
+
+---
+
+## Draft Preference (session-scoped)
+
+- Default: `--keep-draft` (draft kept after export)
+- If the user says they don't want to keep drafts (e.g. "don't keep drafts", "no draft", "skip draft") → set session preference to **no draft**; apply `--no-keep-draft` for all subsequent draft-supporting commands
+- If the user explicitly says "keep draft" for a specific task → apply `--keep-draft` for that task only, regardless of session preference
+- Only commands that support drafts are affected: `auto-captions`, `add-caption`, `compress-video`, `concat-video`, `cutout-video`
+- Commands that do not support drafts are never affected: `extract-audio`, `extract-frame`, `compress-image`, `denoise`, `cutout-image`
 
 ---
 
@@ -195,11 +226,13 @@ Ask:
 >
 > | Option | Description | Default |
 > |--------|-------------|---------|
-> | **Format** | Output format: `jpeg`, `png`, `webp`, `heic` | Same as input |
+> | **Format** | Output format: `jpeg`, `png`, `webp`, `heic` | `jpeg` (unless user specifies otherwise) |
 > | **Quality** | 0.0 (smallest file) to 1.0 (best quality); ignored for PNG | 0.8 |
 > | **Max width** | Resize so width does not exceed this many pixels | Original |
 > | **Max height** | Resize so height does not exceed this many pixels | Original |
 > | **Keep aspect ratio** | Maintain original proportions when resizing | On |
+>
+> **Format rule:** Default output format is always `jpeg` regardless of input format, unless the user explicitly specifies a format. If the user says "keep as PNG" or specifies `webp` / `heic`, use that format instead.
 
 ---
 
