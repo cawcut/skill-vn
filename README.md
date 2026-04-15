@@ -32,19 +32,27 @@ The CLI binary (`vnapp-cli`) is automatically downloaded during skill installati
 ### Features
 
 
-| Capability              | Command          | Description                                                  |
-| ----------------------- | ---------------- | ------------------------------------------------------------ |
-| Extract Audio           | `extract-audio`  | Extract audio track from video (M4A)                         |
-| Extract Frame           | `extract-frame`  | Grab a frame/thumbnail at any position (PNG/JPEG)            |
-| Auto Captions           | `auto-captions`  | Generate subtitles via on-device Whisper and burn into video |
-| Add SRT Subtitles       | `add-caption`    | Burn existing SRT file into video with customizable style    |
-| Compress Video          | `compress-video` | Re-encode video with target resolution, fps, bitrate         |
-| Compress Image          | `compress-image` | Compress/resize images (JPEG, PNG, WebP, HEIC)               |
-| Concatenate Videos      | `concat-video`   | Merge clips with 50+ transition styles                       |
-| Denoise                 | `denoise`        | Reduce noise from audio or video via DeepFilterNet           |
-| Portrait Cutout (Image) | `cutout-image`   | Remove background from person image (PNG with transparency)  |
-| Portrait Cutout (Video) | `cutout-video`   | Remove background from person video (MP4, composited on black) — **Apple Silicon only** |
+| Capability              | Command          | Description                                                  | VN Draft |
+| ----------------------- | ---------------- | ------------------------------------------------------------ | -------- |
+| Extract Audio           | `extract-audio`  | Extract audio track from video (M4A)                         | —     |
+| Extract Frame           | `extract-frame`  | Grab a frame/thumbnail at any position (PNG/JPEG)            | —     |
+| Auto Captions           | `auto-captions`  | Generate subtitles via on-device Whisper and burn into video | Yes   |
+| Add SRT Subtitles       | `add-caption`    | Burn existing SRT file into video with customizable style    | Yes   |
+| Compress Video          | `compress-video` | Re-encode video with target resolution, fps, bitrate         | Yes   |
+| Compress Image          | `compress-image` | Compress/resize images (JPEG, PNG, WebP, HEIC)               | —     |
+| Concatenate Videos      | `concat-video`   | Merge clips with 50+ transition styles                       | Yes   |
+| Denoise                 | `denoise`        | Reduce noise from audio or video via DeepFilterNet           | —     |
+| Portrait Cutout (Image) | `cutout-image`   | Remove background from person image (PNG with transparency)  | —     |
+| Portrait Cutout (Video) | `cutout-video`   | Remove background from person video (MP4, composited on black) — **Apple Silicon only** | Yes |
 
+
+### Draft Management
+
+Commands marked **Yes** in the Draft column keep a VN draft by default after export (`--keep-draft`). This lets you open the result in VN Video Editor for further editing.
+
+- **Default**: drafts are kept after export
+- **Opt out**: tell the agent "don't keep drafts" once, and all subsequent draft-supporting commands in the session will skip drafts (`--no-keep-draft`)
+- **Per-task override**: say "keep draft" or "no draft" on any individual task to override the session preference
 
 ### Skill Contents
 
