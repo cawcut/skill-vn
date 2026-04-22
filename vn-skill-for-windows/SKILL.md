@@ -159,7 +159,13 @@ Or if upgrading:
 Then run:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File "<skill-dir>\scripts\vn-tools-cli-install.ps1"
+# The install script ships as `vn-tools-cli-install.ps1.txt` because ClawHub
+# rejects `.ps1` uploads; copy it to %TEMP% with the real extension before
+# executing so PowerShell treats it as a script.
+$src = "<skill-dir>\scripts\vn-tools-cli-install.ps1.txt"
+$dst = Join-Path $env:TEMP "vn-tools-cli-install.ps1"
+Copy-Item -LiteralPath $src -Destination $dst -Force
+powershell -NoProfile -ExecutionPolicy Bypass -File $dst
 ```
 
 After the installer finishes, re-run the search from Step 1.
@@ -514,3 +520,4 @@ For the full CLI options, all flags, and example invocations:
 - `auto-captions` removes the temporary SRT after burning; it does not return the SRT separately.
 - `cutout-video` composites the subject over a green background (opaque YUV420P); no alpha channel is produced regardless of container format.
 - `concat-video` is hard cut only — no transition effects.
+
