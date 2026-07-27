@@ -1,0 +1,21 @@
+{
+  "name": "vn-skill-for-windows",
+  "description": "Local, on-device video, audio, and image processing for Windows via VN Video Editor — auto captions, SRT subtitle burn-in, denoise, extract audio/frame, compress, concatenate, and video cutout. No cloud upload, no API key required.",
+  "author": {
+    "name": "cawcut"
+  },
+  "homepage": "https://www.vlognow.me/skill/",
+  "repository": "https://github.com/cawcut/skill-vn",
+  "keywords": [
+    "video",
+    "audio",
+    "image",
+    "captions",
+    "subtitles",
+    "compress",
+    "denoise",
+    "cutout",
+    "on-device",
+    "windows"
+  ]
+}
