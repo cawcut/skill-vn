@@ -1,0 +1,20 @@
+{
+  "name": "skill-vn",
+  "description": "VN Video Editor skills for local, on-device video, audio, and image processing on macOS and Windows — no cloud upload, no API key.",
+  "owner": {
+    "name": "cawcut",
+    "url": "https://github.com/cawcut"
+  },
+  "plugins": [
+    {
+      "name": "vn-skill",
+      "source": "./vn-skill",
+      "description": "Local, on-device video, audio, and image processing for macOS via VN Video Editor — auto captions, SRT burn-in, denoise, extract audio/frame, compress, concatenate, and portrait cutout. No cloud upload, no API key."
+    },
+    {
+      "name": "vn-skill-for-windows",
+      "source": "./vn-skill-for-windows",
+      "description": "Local, on-device video, audio, and image processing for Windows via VN Video Editor — auto captions, SRT burn-in, denoise, extract audio/frame, compress, concatenate, and video cutout. No cloud upload, no API key."
+    }
+  ]
+}
