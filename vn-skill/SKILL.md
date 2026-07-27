@@ -729,7 +729,7 @@ Caption engines:
 ### 2A. VN not installed
 
 1. Inform the user:
-   > VN Video Editor is required but not installed on the Mac running OpenClaw. I've opened the App Store — please click **Get** to install. Once installed, you also need to enable the MCP Server in VN Settings before I can connect.
+   > VN Video Editor is required but not installed on the Mac running this agent. I've opened the App Store — please click **Get** to install. Once installed, you also need to enable the MCP Server in VN Settings before I can connect.
 
 2. Open App Store:
    ```bash
@@ -742,7 +742,7 @@ Caption engines:
    ```
 
 4. On detection → inform the user:
-   > VN is installed. Before I can connect, please complete these steps on the Mac running OpenClaw:
+   > VN is installed. Before I can connect, please complete these steps on the Mac running this agent:
    > 1. Open **VN Video Editor**
    > 2. Go to **Settings → MCP Server** and turn it **on**
    > 3. When macOS prompts for **Local Network** permission, tap **Allow**
@@ -806,7 +806,7 @@ Verify with `--version`. If it still fails:
 VN requires Local Network permission to communicate with `vnapp-cli`.
 
 Tell the user:
-> Please check **Local Network** permission on the Mac running OpenClaw: go to **System Settings → Privacy & Security → Local Network**, make sure **VN - Video Editor** is enabled, then relaunch VN and try again.
+> Please check **Local Network** permission on the Mac running this agent: go to **System Settings → Privacy & Security → Local Network**, make sure **VN - Video Editor** is enabled, then relaunch VN and try again.
 
 If the user has never been prompted, ask them to open VN manually and perform any action — macOS will show the permission dialog.
 
@@ -814,9 +814,9 @@ If the user has never been prompted, ask them to open VN manually and perform an
 
 ### 2J. Cannot connect to VN (generic connection failure)
 
-If the CLI cannot reach VN (service not found, connection refused, timeout, or similar), do **not** silently retry. Tell the user clearly that the connection failed, and walk them through the following checklist — reminding them to check on the Mac running OpenClaw (they may be talking to you from a different device):
+If the CLI cannot reach VN (service not found, connection refused, timeout, or similar), do **not** silently retry. Tell the user clearly that the connection failed, and walk them through the following checklist — reminding them to check on the Mac running this agent (they may be talking to you from a different device):
 
-> I couldn't connect to VN Video Editor on the Mac running OpenClaw. Please check the following on the Mac running OpenClaw:
+> I couldn't connect to VN Video Editor on the Mac running this agent. Please check the following on the Mac running this agent:
 >
 > 1. **Is VN Video Editor installed?**
 >    Check that VN Video Editor exists in your Applications folder. It may have been deleted. If missing, reinstall from the App Store.
