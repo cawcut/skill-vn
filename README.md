@@ -23,6 +23,15 @@ Local video, audio, and image processing on macOS and Windows, powered by [VN Vi
 
 ### Install
 
+**Via Plugin Marketplace (Recommended)**
+
+```bash
+/plugin marketplace add cawcut/skill-vn
+/plugin install vn-skill@skill-vn
+```
+
+**Via ClawHub**
+
 ```bash
 clawhub install vn-skill
 ```
@@ -58,6 +67,8 @@ Commands marked **Yes** in the Draft column keep a VN draft by default after exp
 
 ```
 vn-skill/
+├── .claude-plugin/
+│   └── plugin.json                 # Claude Code plugin manifest
 ├── SKILL.md                        # Agent behavior spec, intent mapping, progress reporting, failure handling
 └── references/
     └── cli-reference.md            # Complete CLI option reference
@@ -72,6 +83,15 @@ vn-skill/
 - **Windows 10+** (x64)
 
 ### Install
+
+**Via Plugin Marketplace (Recommended)**
+
+```bash
+/plugin marketplace add cawcut/skill-vn
+/plugin install vn-skill-for-windows@skill-vn
+```
+
+**Via ClawHub**
 
 ```bash
 clawhub install vn-skill-for-windows
@@ -90,26 +110,20 @@ clawhub install vn-skill-for-windows
 | Compress Image          | `compress-image` | Compress/resize images (JPEG, PNG, WebP, HEIC)             |
 | Concatenate Videos      | `concat-video`   | Join multiple video clips                                  |
 | Denoise                 | `denoise`        | Remove background noise via DeepFilterNet                  |
-| Portrait Cutout (Video) | `cutout-video`   | Segment foreground subject from video                      |
+| Video Cutout             | `cutout-video`   | Segment foreground subject from video                      |
 
 
 ### Skill Contents
 
 ```
 vn-skill-for-windows/
-├── openclaw.plugin.json          # Plugin manifest
-├── package.json                  # npm package metadata & OpenClaw SDK config
-├── src/
-│   └── index.ts                  # Plugin entry — auto-install & before_tool_call hook
-├── scripts/
-│   └── vn-tools-cli-install.ps1  # Silent MSI installer
-├── skills/
-│   └── vn-skill-for-windows/
-│       └── SKILL.md              # Agent skill — command reference & UX guidelines
-└── hooks/
-    └── vn-skill-for-windows-package-compat/
-        ├── HOOK.md
-        └── handler.ts
+├── .claude-plugin/
+│   └── plugin.json                     # Claude Code plugin manifest
+├── SKILL.md                            # Agent skill — command reference & UX guidelines
+├── references/
+│   └── cli-reference.md                # Complete CLI option reference
+└── scripts/
+    └── vn-tools-cli-install.ps1.txt    # Silent MSI installer (`.txt` — ClawHub rejects `.ps1` uploads)
 ```
 
 ---
