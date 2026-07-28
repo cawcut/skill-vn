@@ -5,7 +5,8 @@
 .DESCRIPTION
     Standalone installer for OpenClaw skill environments. Downloads the MSI from the
     configured URL if not already present in %TEMP%, then runs a silent
-    per-user install. Skips if the CLI executable is already installed.
+    per-user install. Administrator privileges are required. Skips if the CLI
+    executable is already installed.
 #>
 
 $ErrorActionPreference = 'Stop'
@@ -74,6 +75,11 @@ if ($ExistingInstall) {
     }
 
     Write-Host "$CliDisplayName $InstalledVersion found -- upgrading to $MsiVersion ..."
+}
+
+if (-not (Test-IsAdministrator)) {
+    Write-Error 'Administrator privileges are required to install or upgrade VN Tools CLI. Run this installer from an elevated PowerShell session and approve the Windows UAC prompt.'
+    exit 740
 }
 
 Write-Host '============================================================'

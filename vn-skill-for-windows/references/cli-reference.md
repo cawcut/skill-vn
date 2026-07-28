@@ -2,6 +2,8 @@
 
 Full command reference for VN Tools CLI on Windows.
 
+Installing or upgrading VN Tools CLI requires administrator privileges and Windows UAC approval.
+
 Typical install locations (searched in order):
 - `%LOCALAPPDATA%\Programs\*\CLI\bin\vn-tools-cli.exe`
 - `%LOCALAPPDATA%\*\CLI\bin\vn-tools-cli.exe`
