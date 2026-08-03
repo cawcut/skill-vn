@@ -23,6 +23,12 @@ Local video, audio, and image processing on macOS and Windows, powered by [VN Vi
 
 ### Install
 
+**Codex CLI — Via Skill Installer (in Codex session)**
+
+```text
+Install the skill from cawcut/skill-vn at path vn-skill
+```
+
 **Via Plugin Marketplace (Recommended)**
 
 ```bash
@@ -81,8 +87,15 @@ vn-skill/
 ### Requirements
 
 - **Windows 10+** (x64)
+- **Administrator privileges** to install or upgrade VN Tools CLI (Windows UAC approval required)
 
 ### Install
+
+**Codex CLI — Via Skill Installer (in Codex session)**
+
+```text
+Install the skill from cawcut/skill-vn at path vn-skill-for-windows
+```
 
 **Via Plugin Marketplace (Recommended)**
 

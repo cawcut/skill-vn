@@ -1,5 +1,6 @@
 {
   "name": "vn-skill",
+  "version": "0.1.0",
   "description": "Local, on-device video, audio, and image processing for macOS via VN Video Editor — auto captions, SRT subtitle burn-in, denoise, extract audio/frame, compress, concatenate with transitions, and portrait cutout (image & video). No cloud upload, no API key required.",
   "author": {
     "name": "cawcut"

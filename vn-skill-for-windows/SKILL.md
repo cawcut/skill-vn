@@ -9,6 +9,10 @@ metadata: {"openclaw":{"emoji":"🎬","os":["win32"],"homepage":"https://www.vlo
 
 Process video, image, and audio files locally on Windows — no cloud upload, no API key required.
 
+> [!IMPORTANT]
+> Installing or upgrading VN Tools CLI requires Windows administrator privileges.
+> Tell the user before installation, wait for confirmation, and ask them to approve the Windows UAC prompt.
+
 ---
 
 ## When to Activate
@@ -146,17 +150,17 @@ foreach ($root in @((Join-Path $env:LOCALAPPDATA "Programs"), $env:LOCALAPPDATA,
   - Version **matches or is newer** → continue to Step 3
   - Version **is older or unknown** → go to Step 2 (upgrade)
 
-**Step 2 — Auto-install or upgrade (do NOT ask — just do it and inform the user):**
+**Step 2 — Install or upgrade with administrator approval:**
 
-Tell the user immediately:
+Tell the user that administrator privileges are required and wait for explicit confirmation:
 
-> 🔧 Installing VN Tools CLI (one-time setup) — this may take a minute or two.
+> 🔐 VN Tools CLI needs to be installed with administrator privileges (one-time setup). Windows will show a UAC prompt. May I start the installation?
 
 Or if upgrading:
 
-> 🔧 Upgrading VN Tools CLI to 0.1.0.0 — one moment.
+> 🔐 Upgrading VN Tools CLI to 0.1.0.0 requires administrator privileges. Windows will show a UAC prompt. May I continue?
 
-Then run:
+Do not continue until the user confirms. Then copy the installer script and launch it through an elevated PowerShell process:
 
 ```powershell
 # The install script ships as `vn-tools-cli-install.ps1.txt` because ClawHub
@@ -165,8 +169,14 @@ Then run:
 $src = "<skill-dir>\scripts\vn-tools-cli-install.ps1.txt"
 $dst = Join-Path $env:TEMP "vn-tools-cli-install.ps1"
 Copy-Item -LiteralPath $src -Destination $dst -Force
-powershell -NoProfile -ExecutionPolicy Bypass -File $dst
+$arguments = "-NoProfile -ExecutionPolicy Bypass -File `"$dst`""
+$installer = Start-Process powershell.exe -Verb RunAs -ArgumentList $arguments -Wait -PassThru
+if ($installer.ExitCode -ne 0) {
+  throw "VN Tools CLI installer exited with code $($installer.ExitCode)."
+}
 ```
+
+Tell the user to approve the Windows UAC prompt. If the prompt is declined, stop and explain that installation cannot continue without administrator approval.
 
 After the installer finishes, re-run the search from Step 1.
 
@@ -331,7 +341,7 @@ Skip the download message and go straight to:
 
 **If the CLI needs to be installed first:**
 
-> 🔧 VN Tools CLI needs to be installed first (one-time setup) — this may take a minute or two.
+> 🔐 VN Tools CLI needs to be installed first with administrator privileges. Windows will show a UAC prompt for approval.
 
 After installation, send the processing message as above.
 
@@ -428,6 +438,7 @@ If the install script exits with a non-zero code or the CLI is still not found a
 
 1. Check the MSI log at `%TEMP%\vn-tools-cli-install\vn-tools-cli-install-msi.log` for details.
 2. Common causes:
+  - **Administrator approval missing** — the user declined the UAC prompt or elevation was unavailable. Ask the user to retry and approve UAC, or run the MSI manually as administrator.
   - **Network error** — MSI download failed. Ask the user to check their internet connection and retry.
   - **Antivirus / security software** — may block `msiexec` or quarantine the MSI. Ask the user to temporarily disable it and retry.
   - **Insufficient disk space** — ask the user to free space and retry.
