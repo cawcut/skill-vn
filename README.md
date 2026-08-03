@@ -23,26 +23,28 @@ Local video, audio, and image processing on macOS and Windows, powered by [VN Vi
 
 ### Install
 
-**Codex CLI — Via Skill Installer (in Codex session)**
-
-```text
-Install the skill from cawcut/skill-vn at path vn-skill
-```
-
-**Via Plugin Marketplace (Recommended)**
+**Via Plugin Marketplace — Claude Code**
 
 ```bash
 /plugin marketplace add cawcut/skill-vn
 /plugin install vn-skill@skill-vn
 ```
 
-**Via ClawHub**
+**Via Skill Installer — Codex CLI, Claude Code, Cursor, and other agents**
+
+In an agent session, just say:
+
+```text
+Install the skill from cawcut/skill-vn at path vn-skill
+```
+
+**Via ClawHub — OpenClaw**
 
 ```bash
 clawhub install vn-skill
 ```
 
-The CLI binary (`vnapp-cli`) is automatically downloaded during skill installation. It is a universal build (x86_64 + arm64), signed with Developer ID and notarized by Apple.
+The CLI binary (`vnapp-cli`) is downloaded automatically — during installation via ClawHub, or on first use for the other install methods. It is a universal build (x86_64 + arm64), signed with Developer ID and notarized by Apple.
 
 ### Features
 
@@ -91,20 +93,22 @@ vn-skill/
 
 ### Install
 
-**Codex CLI — Via Skill Installer (in Codex session)**
-
-```text
-Install the skill from cawcut/skill-vn at path vn-skill-for-windows
-```
-
-**Via Plugin Marketplace (Recommended)**
+**Via Plugin Marketplace — Claude Code**
 
 ```bash
 /plugin marketplace add cawcut/skill-vn
 /plugin install vn-skill-for-windows@skill-vn
 ```
 
-**Via ClawHub**
+**Via Skill Installer — Codex CLI, Claude Code, Cursor, and other agents**
+
+In an agent session, just say:
+
+```text
+Install the skill from cawcut/skill-vn at path vn-skill-for-windows
+```
+
+**Via ClawHub — OpenClaw**
 
 ```bash
 clawhub install vn-skill-for-windows
